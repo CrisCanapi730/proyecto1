@@ -1,6 +1,6 @@
 function validarPI(posInicial)
 {
-    const regex = /^\d+,\d+[NE]$/;
+    const regex = /^\d+,\d+[NEO]$/;
     if (regex.test(posInicial)) {
         return true;
     } 
