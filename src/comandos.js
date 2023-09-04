@@ -2,7 +2,7 @@
 function validarComandos(comds)
 {
     let boleano3 = false;
-    const regex = /^[ID]*$/;
+    const regex = /^[IDA]*$/;
     if (regex.test(comds)) {
         boleano3 = true;
     }

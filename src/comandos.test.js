@@ -1,12 +1,15 @@
 import validarComandos from "./comandos";
 describe("Validar formato de los comandos", () => {
-    it("Deberia devolver true porque el formato de la posicion inicial es correcto mirando al norte", () => {
+    it("Deberia devolver I porque el comando es correcto", () => {
       expect(validarComandos("I")).toEqual("I");
     });
-    it("Deberia devolver true porque el formato de la posicion inicial es correcto mirando al norte", () => {
+    it("Deberia devolver D porque el comando es correcto", () => {
       expect(validarComandos("D")).toEqual("D");
     });
-    it("Deberia devolver false porque el formato de la posicion inicial es incorrecto", () => {
-      expect(validarComandos("A")).toEqual(" Formato de comandos incorrecta!!");
+    it("Deberia devolver A porque el comando es correcto", () => {
+      expect(validarComandos("A")).toEqual("A");
+    });
+    it("Deberia devolver incorrecto porque el comando es incorrecto", () => {
+      expect(validarComandos("B")).toEqual(" Formato de comandos incorrecta!!");
     });
 });
