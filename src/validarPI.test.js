@@ -19,4 +19,7 @@ describe("Validar Posicion inicial", () => {
     it("Deberia devolver true porque el formato de la posicion inicial es correcto mirando al oeste", () => {
         expect(validarPI("3,2O")).toEqual(true);
     });
+    it("Deberia devolver true porque el formato de la posicion inicial es correcto mirando al sur", () => {
+        expect(validarPI("5,2S")).toEqual(true);
+    });
   });
