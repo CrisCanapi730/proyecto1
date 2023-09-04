@@ -1,5 +1,5 @@
 import { validarPosicionInicial, validarPuntosMax } from "./validar";
-
+import validarComandos from "./comandos";
 const pos_inicial = document.querySelector("#posicion-inicial");
 const puntos_max = document.querySelector("#puntos-maximos")
 const comds = document.querySelector("#comandos")
@@ -16,8 +16,9 @@ form.addEventListener("submit", (event) => {
   const comandos = comds.value;
   const validar = validarPosicionInicial(posicionInicial);
   const validarPuntos = validarPuntosMax(punMaximos);
+  const validarCmds = validarComandos(comandos);
 
   div.innerHTML = "<p> Posicion inicial: " + validar + "</p>";
   div2.innerHTML = "<p> Puntos maximos: " + validarPuntos + "</p>"
-  div3.innerHTML = "<p> Comandos: " + comandos + "</p>";
+  div3.innerHTML = "<p> Comandos: " + validarCmds + "</p>";
 });
