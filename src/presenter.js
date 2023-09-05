@@ -1,6 +1,6 @@
 import { validarPosicionInicial, validarPuntosMax } from "./validar";
 import validarComandos from "./comandos";
-import { moverIzquierda, moverDerecha, avanzarAuto } from "./moverAuto";
+import { moverIzquierda, moverDerecha, avanzarAuto, calcularPosicionFinal } from "./moverAuto";
 
 const pos_inicial = document.querySelector("#posicion-inicial");
 const puntos_max = document.querySelector("#puntos-maximos")
@@ -26,22 +26,13 @@ form.addEventListener("submit", (event) => {
   let y = Number(posIni[2]);
   let direccion = posIni[3];
   const movimientos = comandos.split('');
-  for (let i = 0; i < movimientos.length; i++) {
-    switch (movimientos[i]) {
-        case 'I':
-            direccion = moverIzquierda(direccion);
-            break;
-        case 'D':
-            direccion = moverDerecha(direccion);
-            break;
-        case 'A':
-            [x, y] = avanzarAuto(x, y, direccion);
-            break;
-    }
-}
+  const [x_final, y_final, direccion_final] = calcularPosicionFinal(x, y, direccion, movimientos, superficie);
+  
+
+  
 
   div.innerHTML = "<p> Posicion inicial: " + validar + "</p>";
   div2.innerHTML = "<p> Puntos maximos: " + validarPuntos + "</p>"
   div3.innerHTML = "<p> Comandos: " + validarCmds + "</p> ";
-  div4.innerHTML = "<p> Posicion final: " + x + "," + y+ direccion+"</p>";
+  div4.innerHTML = "<p> Posicion final: " + x_final + "," + y_final + direccion_final + "</p>";
 });
