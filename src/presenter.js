@@ -1,7 +1,7 @@
 import { validarPosicionInicial, validarPuntosMax } from "./validar";
 import validarComandos from "./comandos";
 import { moverIzquierda, moverDerecha, avanzarAuto, calcularPosicionFinal } from "./moverAuto";
-
+const comandosCompletos = document.querySelector("#comandos-completos");
 const pos_inicial = document.querySelector("#posicion-inicial");
 const puntos_max = document.querySelector("#puntos-maximos")
 const comds = document.querySelector("#comandos")
@@ -13,19 +13,24 @@ const div4 = document.querySelector("#posicion-final");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  const posicionInicial = pos_inicial.value;
-  const punMaximos = puntos_max.value;
-  const comandos = comds.value;
-  const validar = validarPosicionInicial(posicionInicial);
-  const validarPuntos = validarPuntosMax(punMaximos);
-  const validarCmds = validarComandos(comandos);
-  const superficie = punMaximos.split(',').map(Number);
-  let posIni = posicionInicial.match(/(\d+),(\d+)(\w)/);
+  const comands = comandosCompletos.value;
+  const cmds = comands.split('/');
+  const superficie = cmds[0].split(',').map(Number);
+  let posIni = cmds[1].match(/(\d+),(\d+)(\w)/);
   let x = Number(posIni[1]);
   let y = Number(posIni[2]);
   let direccion = posIni[3];
-  const movimientos = comandos.split('');
+  const movimientos = cmds[2].split('');
+
+  /////
+
+  const validar = validarPosicionInicial(cmds[1]);
+  const validarPuntos = validarPuntosMax(cmds[0]);
+  const validarCmds = validarComandos(cmds[2]);
+  
+  
+  
+  
   const [x_final, y_final, direccion_final] = calcularPosicionFinal(x, y, direccion, movimientos, superficie);
   
 
